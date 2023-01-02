@@ -1,0 +1,69 @@
+@model IEnumerable<Nhom13.Models.Nhacungcap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="iphonh1"><marquee> Hệ Thống Quản Lí Bán Iphone 📱📱📱</marquee> </h1>
+
+<h2>Danh sách Nhà cung cấp</h2>
+
+<p>
+    <a asp-action="Create">Thêm Nhà cung cấp</a>
+</p>
+<p>
+    <a asp-action="Upload">Upload</a>
+</p>
+<form asp-controller="Nhacungcap" asp-action="Index">
+    <p>
+        Tiêu đề: <input type="text" name="SearchString" />
+        <input type="submit" value="Lọc" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SdtNCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiachiNCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailNCC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SdtNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailNCC)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaNCC">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaNCC">Thông Tin</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaNCC">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
